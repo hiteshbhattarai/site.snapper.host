@@ -1,0 +1,6 @@
+@site.snapper.api.host_HostAddress = http://localhost:5255
+
+GET {{site.snapper.api.host_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

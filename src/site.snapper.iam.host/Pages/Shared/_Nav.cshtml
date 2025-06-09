@@ -1,0 +1,59 @@
+@using Duende.IdentityServer.Extensions
+@{
+    #nullable enable
+    string? name = null;
+    if (!true.Equals(ViewData["signed-out"]))
+    {
+        name = Context.User?.GetDisplayName();
+    }
+
+    
+}
+
+
+
+<div class="nav-page nav-box-shadow">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <div class="navbar-nav">
+                <a href="~/" class="navbar-brand logo-link">
+                    <img src="~/images/logo/logo.png" class="snapper-logo">
+                    <span class="logo-title"> SiteSnapper</span>
+
+                </a>
+
+            </div>
+
+            <div class="navbar-nav  ms-auto">
+                @if (!string.IsNullOrWhiteSpace(name))
+                {
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item dropdown ">
+                            <span class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Admin</span>
+
+                            <div class="dropdown-menu dropleft dropdown-menu-end">
+
+                                <a class="dropdown-item" asp-page="/Admin/Clients/Index">Clients</a>
+                                <a class="dropdown-item" asp-page="/Admin/IdentityScopes/Index">Identity Scopes</a>
+                                <a class="dropdown-item" asp-page="/Admin/ApiScopes/Index">API Scopes</a>
+                                <a class="dropdown-item" asp-page="/Admin/ApiResources/Index">API Resources</a>
+
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown ">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">@name <b class="caret"></b></a>
+
+                            <div class="dropdown-menu dropleft dropdown-menu-end">
+                                <a class="dropdown-item" asp-page="/Account/Logout/Index">Logout</a>
+                            </div>
+                        </li>
+                    </ul>
+                }
+            </div>
+
+         </div>
+      
+        
+    
+    </nav>
+</div>
